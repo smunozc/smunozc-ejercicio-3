@@ -3,7 +3,7 @@
 // Teniendo la lista ya filtrada, la recorreréis con el método "forEach" para mostrar por consola el nombre de cada usuario.
 
 let buttonShowList = document.getElementById("showList");
-buttonShowList.addEventListener("click", showUsers);
+buttonShowList.addEventListener("click", getUsers);
 
 function getUsers() {
   let array = [];
@@ -12,19 +12,7 @@ function getUsers() {
     .then(data => {
       array = data;
       console.log(array);
-      return array;
+      let array2 = array.filter(user => user.money > 500);
+      array2.forEach(user => console.log(user));
     });
-  return array;
-}
-
-function getFilteredUsers(array) {
-  console.log("array: " + array);
-  let array2 = [];
-  array2 = array.filter(user => user.money > 500);
-  //console.log(array2);
-  array2.forEach(user => console.log(user.name));
-}
-
-function showUsers() {
-  getFilteredUsers(getUsers());
 }
