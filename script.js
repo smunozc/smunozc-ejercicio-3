@@ -5,25 +5,26 @@
 let buttonShowList = document.getElementById("showList");
 buttonShowList.addEventListener("click", showUsers);
 
-var array = [];
-
 function getUsers() {
+  let array = [];
   fetch("users.json")
     .then(response => response.json())
     .then(data => {
       array = data;
       console.log(array);
+      return array;
     });
+  return array;
 }
 
-function getFilteredUsers() {
+function getFilteredUsers(array) {
+  console.log("array: " + array);
   let array2 = [];
   array2 = array.filter(user => user.money > 500);
-  console.log(array2);
+  //console.log(array2);
   array2.forEach(user => console.log(user.name));
 }
 
 function showUsers() {
-  getUsers();
-  getFilteredUsers();
+  getFilteredUsers(getUsers());
 }
