@@ -17,8 +17,10 @@ function getUsers() {
 }
 
 function getFilteredUsers() {
-  let array2 = array.filter(element => element.money > 500);
-  array2.forEach(element => console.log(element));
+  let array2 = [];
+  array2 = array.filter(user => user.money > 500);
+  console.log(array2);
+  array2.forEach(user => console.log(user.name));
 }
 
 function showUsers() {
